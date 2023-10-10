@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b744ef5251693409afe28bbc4d81c4, type: 3}
   m_Name: ShroomLoot
   m_EditorClassIdentifier: 
+  itemType: 0
+  dropChance: 100
