@@ -6,8 +6,9 @@ using UnityEngine;
 public class EnemyLootBag : MonoBehaviour
 {
     public List<EnemyLoot> lootList = new List<EnemyLoot>();
-
-    public GameObject dropItemPrefab;
+    public GameObject medKitPrefab;
+    public GameObject coinPrefab;
+    public GameObject damageItemPrefab;
 
     EnemyLoot GetDroppedItem()
     {
@@ -31,14 +32,41 @@ public class EnemyLootBag : MonoBehaviour
 
     }
 
-    public void InstantiateLoot(Vector3 spawnPosition)
+     public void InstantiateLoot(Vector3 spawnPosition)
     {
         EnemyLoot droppedItem = GetDroppedItem();
         if (droppedItem != null)
-        { 
-            Instantiate(dropItemPrefab, spawnPosition, Quaternion.identity);
-            float dropForce = 20f;
-            Vector3 dropDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        {
+            GameObject lootGameObject = InstantiateItemPrefab(droppedItem.itemType, spawnPosition);
+            if (lootGameObject != null)
+            {
+                // You can customize the item further as needed
+            }
         }
+    }
+
+    private GameObject InstantiateItemPrefab(ItemType itemType, Vector3 spawnPosition)
+    {
+        GameObject prefabToInstantiate = null;
+
+        switch (itemType)
+        {
+            case ItemType.MedKit:
+                prefabToInstantiate = medKitPrefab;
+                break;
+            case ItemType.Coin:
+                prefabToInstantiate = coinPrefab;
+                break;
+            case ItemType.DamageItem:
+                prefabToInstantiate = damageItemPrefab;
+                break;
+        }
+
+        if (prefabToInstantiate != null)
+        {
+            return Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+        }
+
+        return null;
     }
 }

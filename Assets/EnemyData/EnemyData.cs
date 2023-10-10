@@ -6,7 +6,6 @@ public class EnemyData : ScriptableObject
 {
    public float health;
    public float damage;
-   public List<GameObject> itemsToDrop;
-   public int dropChance;
+
    
 }

@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c654e9786446040a97615a91d7367c, type: 3}
-  m_Name: Shroom
+  m_Script: {fileID: 11500000, guid: a4b744ef5251693409afe28bbc4d81c4, type: 3}
+  m_Name: Shroom2
   m_EditorClassIdentifier: 
-  health: 100
-  damage: 10
-  itemsToDrop:
-  - {fileID: 1535143597520364765, guid: 444af09afeadee048a626214493e004b, type: 3}
+  itemType: 0
   dropChance: 0

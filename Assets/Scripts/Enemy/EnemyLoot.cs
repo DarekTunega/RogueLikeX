@@ -5,12 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "EnemyData/lootItems")]
 public class EnemyLoot : ScriptableObject
 {
-    public GameObject itemToDrop;
+    public ItemType itemType;
     public int dropChance;
+}
 
-    public EnemyLoot(GameObject gameObject, int dropChance)
-    {
-        this.itemToDrop = gameObject;
-        this.dropChance = dropChance;
-    }
+public enum ItemType
+{
+    MedKit,
+    Coin,
+    DamageItem
 }
