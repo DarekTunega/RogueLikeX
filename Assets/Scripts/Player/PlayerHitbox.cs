@@ -17,7 +17,7 @@ public class PlayerHitbox : MonoBehaviour
          player.CallItemOnHit(enemy);
          if (enemy.health <= 0)
          {
-            Destroy(enemy.gameObject);
+            enemy.Die();
          }
       }
    }
