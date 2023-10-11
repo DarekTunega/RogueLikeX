@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        Vector3 spawnPoint = new Vector3(this.transform.position.x, transform.position.x + 3, transform.position.z);
+        Vector3 spawnPoint = new Vector3(this.transform.position.x, transform.position.x + 1.2f, transform.position.z);
         GetComponent<EnemyLootBag>().InstantiateLoot(spawnPoint);
         Destroy(this.gameObject);
     }

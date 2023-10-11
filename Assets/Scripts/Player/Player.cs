@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
         MedKit hp = new MedKit();
         Coin coin = new Coin();
         DamageItem damageItem = new DamageItem();
-        items.Add(new ItemList(damageItem, damageItem.GiveName(), 1));
-        items.Add(new ItemList(coin, coin.GiveName(), 1));
-        items.Add(new ItemList(hp, hp.GiveName(), 1));
+        items.Add(new ItemList(damageItem, damageItem.GetName(), 1));
+        items.Add(new ItemList(coin, coin.GetName(), 1));
+        items.Add(new ItemList(hp, hp.GetName(), 1));
     }
 
     public void CallItemOnHit(Enemy enemy)

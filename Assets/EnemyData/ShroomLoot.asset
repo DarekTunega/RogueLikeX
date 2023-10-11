@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ShroomLoot
   m_EditorClassIdentifier: 
   itemType: 0
-  dropChance: 100
+  dropChance: 10
