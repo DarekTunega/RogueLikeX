@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Item
 {
-    public abstract string GiveName();
+    public abstract string GetName();
 
     public virtual void Update(Player player, int stacks)
     {
@@ -25,7 +25,7 @@ public abstract class Item
 
 public class MedKit : Item
 {
-    public override string GiveName()
+    public override string GetName()
     {
         return "MedKit";
     }
@@ -38,7 +38,7 @@ public class MedKit : Item
 
 public class Coin : Item
 {
-    public override string GiveName()
+    public override string GetName()
     {
         return "Coin";
     }
@@ -51,7 +51,7 @@ public class Coin : Item
 
 public class DamageItem : Item
 {
-    public override string GiveName()
+    public override string GetName()
     {
         return "DAMAGE++";
     }
@@ -61,4 +61,5 @@ public class DamageItem : Item
         enemy.health -= 10 * stacks;
         Debug.Log("onhit called");
     }
+
 }
