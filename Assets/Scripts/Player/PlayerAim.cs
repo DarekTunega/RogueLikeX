@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,13 @@ public class PlayerAim : MonoBehaviour
     public CinemachineFreeLook thirdPersonCamera;
     public CinemachineVirtualCamera aimCamera;
 
-    private bool isAimed = false;
+    public bool isAimed = false;
+
+    private void Start()
+    {
+     isAimed = false;
+
+    }
 
     private void Update()
     {

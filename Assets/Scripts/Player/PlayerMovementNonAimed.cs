@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerMovementNonAimed : MonoBehaviour
 {
     [FormerlySerializedAs("_controller")] [SerializeField] private CharacterController controller;
     [SerializeField] private float speed = 10f;
@@ -16,6 +16,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     private Animator _animator;
+    public PlayerAim playerAim; // Reference to the PlayerAim script
+
 
     [SerializeField] private float mouseSensitivity = 3.0f; // Sensitivity for mouse movement
     [SerializeField] private float minAimAngle = -20.0f; // Clamped angle for aiming down
@@ -104,7 +106,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandlePlayerRotation()
     {
-        if (!isAiming)
+        if (playerAim.isAimed)
         {
             // Modify the player's rotation based on your mouse input when not aiming.
             float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
