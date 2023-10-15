@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c654e9786446040a97615a91d7367c, type: 3}
-  m_Name: New Enemy Data
+  m_Script: {fileID: 11500000, guid: 5f25ea207ff239e47bb5453db1cc9dfa, type: 3}
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  health: 25
-  damage: 10
+  damage: 15
+  weaponName: Sword
+  WeaponPrefab: {fileID: 6053320907128860008, guid: 67a0685fc7124114cb707d03d1a164b7,
+    type: 3}

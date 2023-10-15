@@ -10,19 +10,36 @@ public class Enemy : MonoBehaviour
     public float health;
     public float damage;
     public EnemyLoot enemyLoot;
+    public float maxHealth;
+    public Animator animator;
 
-
-    private void Start()
+    private void Awake()
     {
-        health = enemyData.health;
+        maxHealth = enemyData.maxHealth;
         damage = enemyData.damage;
-       
+        health = maxHealth;
     }
+
+   
 
     public void Die()
     {
-        Vector3 spawnPoint = new Vector3(this.transform.position.x, transform.position.x + 1.2f, transform.position.z);
+        if (animator != null)
+        {
+            animator.SetTrigger("Death");
+        }
+
+        Debug.Log("Waiting for animation to end");
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.x + 1.2f, transform.position.z);
         GetComponent<EnemyLootBag>().InstantiateLoot(spawnPoint);
+        StartCoroutine(WaitForDeath());
+
+    }
+
+    private IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
+
     }
 }

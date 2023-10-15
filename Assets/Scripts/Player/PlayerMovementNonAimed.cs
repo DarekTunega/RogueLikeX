@@ -16,14 +16,14 @@ public class PlayerMovementNonAimed : MonoBehaviour
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
     private Animator _animator;
-    public PlayerAim playerAim; // Reference to the PlayerAim script
+    public PlayerAim playerAim; 
 
 
-    [SerializeField] private float mouseSensitivity = 3.0f; // Sensitivity for mouse movement
-    [SerializeField] private float minAimAngle = -20.0f; // Clamped angle for aiming down
-    [SerializeField] private float maxAimAngle = 20.0f; // Clamped angle for aiming up
+    [SerializeField] private float mouseSensitivity = 3.0f; 
+    [SerializeField] private float minAimAngle = -20.0f; 
+    [SerializeField] private float maxAimAngle = 20.0f; 
 
-    private bool isAiming = false;
+    private bool _isAiming = false;
 
     private void Start()
     {
@@ -32,9 +32,9 @@ public class PlayerMovementNonAimed : MonoBehaviour
 
     private void Update()
     {
-        isAiming = IsAiming();
+        _isAiming = IsAiming();
 
-        if (!isAiming)
+        if (!_isAiming)
         {
             HandleNonAiming();
         }
@@ -49,7 +49,6 @@ public class PlayerMovementNonAimed : MonoBehaviour
 
     private bool IsAiming()
     {
-        // You can implement your aiming logic here, for example, checking if the right mouse button is held down.
         return Input.GetMouseButton(1);
     }
 
@@ -77,12 +76,10 @@ public class PlayerMovementNonAimed : MonoBehaviour
         float verticalRotation = Input.GetAxis("Mouse Y") * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, minAimAngle, maxAimAngle);
 
-        // Modify the player's rotation based on mouse input.
         transform.Rotate(Vector3.up * horizontalRotation);
 
         if (horizontalRotation != 0)
         {
-            // Modify the camera's rotation based on the horizontal rotation while aiming.
             cam.Rotate(Vector3.up * horizontalRotation);
         }
     }
@@ -108,7 +105,6 @@ public class PlayerMovementNonAimed : MonoBehaviour
     {
         if (playerAim.isAimed)
         {
-            // Modify the player's rotation based on your mouse input when not aiming.
             float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
             transform.Rotate(Vector3.up * horizontalRotation);
         }

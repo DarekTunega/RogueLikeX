@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName="EnemyData/Stats")]
 public class EnemyData : ScriptableObject
 {
-   public float health;
+   public float maxHealth;
    public float damage;
 
    
