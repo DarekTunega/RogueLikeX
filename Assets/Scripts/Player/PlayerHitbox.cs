@@ -8,11 +8,13 @@ public class WeaponHitbox : MonoBehaviour
    public Player player;
    public WeaponData WeaponData;
    public WeaponManager weaponManager;
-   private void OnTriggerEnter(Collider other)
+   private bool canDamage = true;
+   private void OnTriggerStay(Collider other)
    {
       
-      if (other.CompareTag("Enemy") && weaponManager.isAttacking)
+      if (other.CompareTag("Enemy") && weaponManager.isAttacking && canDamage)
       {
+         canDamage = false;
          Debug.Log("Collided with enemy");
          Enemy enemy = other.GetComponent<Enemy>();
          float damage = WeaponData.damage;
@@ -23,6 +25,15 @@ public class WeaponHitbox : MonoBehaviour
          {
             enemy.Die();
          }
+      }
+   }
+
+   private void OnTriggerExit(Collider other)
+   {
+      var compareTag = other.CompareTag("Enemy") && canDamage;
+      if (compareTag)
+      {
+         canDamage = true;
       }
    }
 }

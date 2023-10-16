@@ -15,11 +15,16 @@ public class WeaponManager : MonoBehaviour
     public bool canAttack = true;
     public bool isAttacking = false;
     private int attackCooldown = 1;
+    public PlayerAim playerCam;
+
+    private void Awake()
+    {
+    }
 
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed)
         {
             SwordAttack();
         }
