@@ -30,8 +30,7 @@ public class Enemy : MonoBehaviour
         }
 
         Debug.Log("Waiting for animation to end");
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.x + 1.2f, transform.position.z);
-        GetComponent<EnemyLootBag>().InstantiateLoot(spawnPoint);
+        
         StartCoroutine(WaitForDeath());
 
     }
@@ -39,6 +38,8 @@ public class Enemy : MonoBehaviour
     private IEnumerator WaitForDeath()
     {
         yield return new WaitForSeconds(1);
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.x + 1.2f, transform.position.z);
+        GetComponent<EnemyLootBag>().InstantiateLoot(spawnPoint);
         Destroy(this.gameObject);
 
     }

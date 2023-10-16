@@ -7,9 +7,11 @@ public class WeaponHitbox : MonoBehaviour
 {
    public Player player;
    public WeaponData WeaponData;
+   public WeaponManager weaponManager;
    private void OnTriggerEnter(Collider other)
    {
-      if (other.CompareTag("Enemy"))
+      
+      if (other.CompareTag("Enemy") && weaponManager.isAttacking)
       {
          Debug.Log("Collided with enemy");
          Enemy enemy = other.GetComponent<Enemy>();

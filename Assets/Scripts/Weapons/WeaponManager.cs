@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -10,6 +11,19 @@ public class WeaponManager : MonoBehaviour
     private GameObject currentWeapon;
     [SerializeField] public WeaponData equippedWeapon;
     [SerializeField] private Player player;
+    [SerializeField] private Animator animator;
+    public bool canAttack = true;
+    public bool isAttacking = false;
+    private int attackCooldown = 1;
+
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            SwordAttack();
+        }
+    }
 
     public void EquipWeapon(WeaponData weaponData)
     {
@@ -23,8 +37,31 @@ public class WeaponManager : MonoBehaviour
         currentWeapon.transform.SetParent(weaponSlot);
         currentWeapon.transform.localPosition = UnityEngine.Vector3.zero;
         currentWeapon.transform.localRotation = Quaternion.identity;
+        SphereCollider sphereCollider = currentWeapon.GetComponent<SphereCollider>();
+        sphereCollider.enabled = false;
         WeaponHitbox weaponHitbox = currentWeapon.GetComponent<WeaponHitbox>();
         weaponHitbox.player = player;
         weaponHitbox.WeaponData = equippedWeapon;
+        weaponHitbox.weaponManager = this;
+    }
+
+    public void SwordAttack()
+    {
+        isAttacking = true;
+        canAttack = false;
+        animator.SetTrigger("Attack");
+        StartCoroutine(AttackAction());
+        StartCoroutine(WaitForAttackCooldown());
+    }
+
+    IEnumerator WaitForAttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+    IEnumerator AttackAction()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
     }
 }

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7558654750919702647}
   - component: {fileID: 5157333798823016462}
   - component: {fileID: 5692914121728838845}
-  - component: {fileID: 2996940590579763400}
   - component: {fileID: 4980510005159475801}
   - component: {fileID: 3055537329960766479}
   - component: {fileID: 681078539737256919}
@@ -105,27 +104,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &2996940590579763400
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6053320907128860008}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 15c6e38471dd14f419a5a5f70c2f83bb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4980510005159475801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  wC: {fileID: 0}
+  WeaponData: {fileID: 0}
+  weaponManager: {fileID: 0}
 --- !u!65 &3055537329960766479
 BoxCollider:
   m_ObjectHideFlags: 0
