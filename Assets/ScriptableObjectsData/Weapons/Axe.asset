@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b744ef5251693409afe28bbc4d81c4, type: 3}
-  m_Name: Shroom2
+  m_Script: {fileID: 11500000, guid: 5f25ea207ff239e47bb5453db1cc9dfa, type: 3}
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  itemType: 1
-  dropChance: 20
+  damage: 100
+  weaponName: Axe
+  WeaponPrefab: {fileID: 6805192611700296147, guid: 5a6e2ffb580eee04ca5792467f5194a8,
+    type: 3}

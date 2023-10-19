@@ -16,7 +16,7 @@ public class PlayerAim : MonoBehaviour
 
     private void Start()
     {
-     isAimed = false;
+        isAimed = false;
 
     }
 

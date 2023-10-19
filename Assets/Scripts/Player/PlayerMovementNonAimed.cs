@@ -4,26 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+
 public class PlayerMovementNonAimed : MonoBehaviour
 {
-    [FormerlySerializedAs("_controller")] [SerializeField] private CharacterController controller;
+    [SerializeField] private CharacterController controller;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float turnSmoothTime = 0.1f;
-    [SerializeField] private float turnSmoothVelocity;
     [SerializeField] private Transform cam;
-    [SerializeField] private Vector3 playerVelocity;
-    [SerializeField] bool groundedPlayer;
-    [SerializeField] float jumpHeight = 1.0f;
-    [SerializeField] float gravityValue = -9.81f;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
     private Animator _animator;
-    public PlayerAim playerAim; 
+    public PlayerAim playerAim;
 
-
-    [SerializeField] private float mouseSensitivity = 3.0f; 
-    [SerializeField] private float minAimAngle = -20.0f; 
-    [SerializeField] private float maxAimAngle = 20.0f; 
-
+    [SerializeField] private float mouseSensitivity = 3.0f;
+    
     private bool _isAiming = false;
+    private float turnSmoothVelocity;
 
     private void Start()
     {
@@ -72,16 +70,12 @@ public class PlayerMovementNonAimed : MonoBehaviour
 
     private void HandleAiming()
     {
-        float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float verticalRotation = Input.GetAxis("Mouse Y") * mouseSensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, minAimAngle, maxAimAngle);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        transform.Rotate(Vector3.up * horizontalRotation);
+        Vector3 moveDirection = (cam.transform.forward * vertical + cam.transform.right * horizontal).normalized;
 
-        if (horizontalRotation != 0)
-        {
-            cam.Rotate(Vector3.up * horizontalRotation);
-        }
+        controller.Move(moveDirection * speed * Time.deltaTime);
     }
 
     private void HandleMovement(Vector3 direction)

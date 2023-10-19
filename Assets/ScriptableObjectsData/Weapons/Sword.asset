@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f25ea207ff239e47bb5453db1cc9dfa, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 1
   weaponName: Sword
   WeaponPrefab: {fileID: 6053320907128860008, guid: 67a0685fc7124114cb707d03d1a164b7,
     type: 3}

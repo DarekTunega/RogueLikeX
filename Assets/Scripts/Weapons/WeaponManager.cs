@@ -14,6 +14,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Animator animator;
     public bool canAttack = true;
     public bool isAttacking = false;
+    public bool canDamage = true;
     private int attackCooldown = 1;
     public PlayerAim playerCam;
 
