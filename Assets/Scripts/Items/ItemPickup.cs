@@ -17,7 +17,7 @@ public class ItemPickup : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Robot"))
         {
             Player player = other.GetComponent<Player>();
             AddItem(player);

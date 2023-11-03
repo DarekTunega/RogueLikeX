@@ -8,6 +8,7 @@ public class SC_RobotFollow : MonoBehaviour
 {
     public Transform playerPosition;
     private NavMeshAgent _agent;
+    public float distance;
 
     private void Start()
     {
@@ -16,7 +17,11 @@ public class SC_RobotFollow : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_agent.speed);
-        _agent.destination = playerPosition.position;
+        if (Vector3.Distance(_agent.destination, playerPosition.position) > distance)
+        {
+            _agent.speed = 4;
+            _agent.destination = playerPosition.position;
+        }
+        
     }
 }

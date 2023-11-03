@@ -8,6 +8,7 @@ public class RobotAnimator : MonoBehaviour
 {
     public Animator animator;
     public NavMeshAgent agent;
+    
 
     public void Start()
     {
