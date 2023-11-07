@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shroom2
   m_EditorClassIdentifier: 
   itemType: 1
-  dropChance: 20
+  dropChance: 45

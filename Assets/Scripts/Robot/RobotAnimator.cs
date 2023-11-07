@@ -1,23 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RobotAnimator : MonoBehaviour
+namespace Robot
 {
-    public Animator animator;
-    public NavMeshAgent agent;
-
-    public void Start()
+    public class RobotAnimator : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-    }
+        public Animator animator;
+        public NavMeshAgent agent;
 
-    public void Update()
-    {
-        float speedPercent = agent.velocity.magnitude / agent.speed;
-        animator.SetFloat("Speedpercent", speedPercent, 0.1f, Time.deltaTime);
+        public void Start()
+        {
+            animator = GetComponent<Animator>();
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        public void Update()
+        {
+            float speedPercent = agent.velocity.magnitude / agent.speed;
+            animator.SetFloat("Speedpercent", speedPercent, 0.1f, Time.deltaTime);
+        }
     }
 }

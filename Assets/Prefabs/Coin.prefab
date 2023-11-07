@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2836325641152945427}
   - component: {fileID: 2672681869240442089}
   - component: {fileID: 2815843766229338952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin_Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 4978690454393613881}
   - component: {fileID: 1560439144272004128}
   - component: {fileID: 3204901766761417021}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: CollectibleItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f16aa169c2cfd14fa7ccd6157c06d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robotSearchForItems: {fileID: 0}
   itemDrop: 1
 --- !u!135 &4978690454393613881
 SphereCollider:

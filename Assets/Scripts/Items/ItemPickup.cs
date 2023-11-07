@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Robot;
 using UnityEngine;
 //Good
 public class ItemPickup : MonoBehaviour
 {
     public Item item;
+    public RobotSearchForItems robotSearchForItems;
 
     public Items itemDrop;
     // Start is called before the first frame update
@@ -20,6 +22,13 @@ public class ItemPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player player = other.GetComponent<Player>();
+            AddItem(player);
+            item.OnPickup(player, 1);
+            Destroy(this.gameObject);
+        }
+        else if (other.CompareTag("Robot"))
+        {
+            Player player = other.GetComponent<SC_RobotFollow>().player;
             AddItem(player);
             item.OnPickup(player, 1);
             Destroy(this.gameObject);
