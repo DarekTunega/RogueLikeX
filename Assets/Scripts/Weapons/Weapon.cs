@@ -12,16 +12,17 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             WeaponManager weaponManager = other.GetComponent<WeaponManager>();
-            if (weaponManager != null)
+            if (weaponManager != null && weaponManager.weaponEquipped == false)
             {
                 weaponManager.EquipWeapon(weaponData);
+                Destroy(gameObject);
             }
             else
             {
                 Debug.Log("WTF?XD");
             }
 
-            Destroy(gameObject);
+           
         }
         
     }

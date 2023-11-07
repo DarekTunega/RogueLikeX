@@ -17,6 +17,7 @@ public class WeaponManager : MonoBehaviour
     public bool canDamage = true;
     private int attackCooldown = 1;
     public PlayerAim playerCam;
+    public bool weaponEquipped;
 
     private void Awake()
     {
@@ -34,21 +35,27 @@ public class WeaponManager : MonoBehaviour
     public void EquipWeapon(WeaponData weaponData)
     {
         equippedWeapon = weaponData;
-        if (currentWeapon != null)
+        
+        if (currentWeapon == null)
         {
-            Destroy(currentWeapon);
+            currentWeapon = Instantiate(weaponData.WeaponPrefab);
+            currentWeapon.transform.SetParent(weaponSlot);
+            currentWeapon.transform.localPosition = UnityEngine.Vector3.zero;
+            currentWeapon.transform.localRotation = Quaternion.identity;
+            SphereCollider sphereCollider = currentWeapon.GetComponent<SphereCollider>();
+            sphereCollider.enabled = false;
+            WeaponHitbox weaponHitbox = currentWeapon.GetComponent<WeaponHitbox>();
+            weaponHitbox.player = player;
+            weaponHitbox.WeaponData = equippedWeapon;
+            weaponHitbox.weaponManager = this;
+            weaponEquipped = true;
+        }
+        else
+        {
+            Debug.Log("weaponslot full");
         }
         
-        currentWeapon = Instantiate(weaponData.WeaponPrefab);
-        currentWeapon.transform.SetParent(weaponSlot);
-        currentWeapon.transform.localPosition = UnityEngine.Vector3.zero;
-        currentWeapon.transform.localRotation = Quaternion.identity;
-        SphereCollider sphereCollider = currentWeapon.GetComponent<SphereCollider>();
-        sphereCollider.enabled = false;
-        WeaponHitbox weaponHitbox = currentWeapon.GetComponent<WeaponHitbox>();
-        weaponHitbox.player = player;
-        weaponHitbox.WeaponData = equippedWeapon;
-        weaponHitbox.weaponManager = this;
+       
     }
 
     public void SwordAttack()

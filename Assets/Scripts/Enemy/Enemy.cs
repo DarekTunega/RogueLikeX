@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator WaitForDeath()
     {
         yield return new WaitForSeconds(1);
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.x + 0.8f, transform.position.z);
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.x + 0.1f, transform.position.z);
         GetComponent<EnemyLootBag>().InstantiateLoot(spawnPoint);
         Destroy(this.gameObject);
 

@@ -6,9 +6,7 @@ using UnityEngine;
 //Good
 public class ItemPickup : MonoBehaviour
 {
-    public Item item;
-    public RobotSearchForItems robotSearchForItems;
-
+    public Item item; 
     public Items itemDrop;
     // Start is called before the first frame update
     void Start()
