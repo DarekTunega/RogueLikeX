@@ -30,6 +30,12 @@ public class WeaponHitbox : MonoBehaviour
 
    private void OnTriggerExit(Collider other)
    {
+      if (!other.CompareTag("Enemy"))
+      {
+         Debug.Log("Someone got hit but it wasnt a enemy, clearly, it was " + other.name);
+         return;
+      }
+      
       weaponManager.canDamage = true;
    }
 }

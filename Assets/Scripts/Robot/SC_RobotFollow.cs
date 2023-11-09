@@ -36,12 +36,10 @@ namespace Robot
             if (detectedItems.Count > 0)
             {
                 SetItemFollow();
-                Debug.Log("Found items: " + detectedItems.Count);
 
                 detectedItems.Sort((item1, item2) => Vector3.Distance(transform.position, item1.position)
                     .CompareTo(Vector3.Distance(transform.position, item2.position)));
 
-                Debug.Log("Destination: " + detectedItems[0].position);
 
                 _agent.destination = detectedItems[0].position;
             }

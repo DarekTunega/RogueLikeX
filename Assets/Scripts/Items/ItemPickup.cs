@@ -56,6 +56,8 @@ public class ItemPickup : MonoBehaviour
                 return new Coin();
             case Items.DamageItem:
                 return new DamageItem();
+            case Items.KeyItem:
+                return new KeyItem();
             default:
                 return new Coin();
             
@@ -67,5 +69,6 @@ public class ItemPickup : MonoBehaviour
         HealingItem,
         CoinItem,
         DamageItem,
+        KeyItem
     }
 }

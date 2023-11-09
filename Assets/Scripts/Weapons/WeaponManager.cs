@@ -8,7 +8,7 @@ using Vector3 = System.Numerics.Vector3;
 public class WeaponManager : MonoBehaviour
 {
     [SerializeField]private Transform weaponSlot;
-    private GameObject currentWeapon;
+    public GameObject currentWeapon;
     [SerializeField] public WeaponData equippedWeapon;
     [SerializeField] private Player player;
     [SerializeField] private Animator animator;
@@ -26,7 +26,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed)
+        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed && equippedWeapon != null)
         {
             SwordAttack();
         }

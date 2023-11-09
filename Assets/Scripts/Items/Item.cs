@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 [System.Serializable]
 //Good
@@ -18,6 +19,10 @@ public abstract class Item
     }
 
     public virtual void OnPickup(Player player, int stacks)
+    {
+        
+    }
+    public virtual void OnUse(Player player, int stacks)
     {
         
     }
@@ -43,9 +48,9 @@ public class Coin : Item
         return "Coin";
     }
 
-    public override void OnPickup(Player player, int stacks)
+    public override void OnPickup(Player player,  int stacks)
     {
-        player.coins += 5;
+        CoinCounter.instance.AddCoins(5);
     }
 }
 
@@ -62,4 +67,23 @@ public class DamageItem : Item
         Debug.Log("onhit called");
     }
 
+}
+
+public class KeyItem : Item
+{
+    public override string GetName()
+    {
+        return "Key";
+    }
+
+    public override void OnPickup(Player player, int stacks)
+    {
+        player.keys++;
+        KeysCounter.instance.AddKeys(1);
+    }
+    public override void OnUse(Player player, int stacks)
+    {
+        player.keys--;
+        KeysCounter.instance.RemoveKeys(1);
+    }
 }

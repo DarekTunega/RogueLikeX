@@ -19,7 +19,11 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                Debug.Log("WTF?XD");
+                //destroy currently held weapon and equip new one
+                Destroy(weaponManager.currentWeapon.gameObject);
+                weaponManager.currentWeapon = null;
+                weaponManager.EquipWeapon(weaponData);
+                Destroy(gameObject);
             }
 
            

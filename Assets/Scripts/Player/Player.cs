@@ -6,8 +6,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float health = 100f;
-    public int coins;
     public float meleeDamage;
+    public int keys;
     public List<ItemList> items = new List<ItemList>();
 
  
