@@ -7,7 +7,7 @@ using Vector3 = System.Numerics.Vector3;
 
 public class WeaponManager : MonoBehaviour
 {
-    [SerializeField]private Transform weaponSlot;
+    [SerializeField] private Transform weaponSlot;
     public GameObject currentWeapon;
     [SerializeField] public WeaponData equippedWeapon;
     [SerializeField] private Player player;
@@ -15,7 +15,6 @@ public class WeaponManager : MonoBehaviour
     public bool canAttack = true;
     public bool isAttacking = false;
     public bool canDamage = true;
-    private int attackCooldown = 1;
     public PlayerAim playerCam;
     public bool weaponEquipped;
 
@@ -26,16 +25,16 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed && equippedWeapon != null)
+        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed && equippedWeapon != null && canAttack)
         {
-            SwordAttack();
+            Attack();
         }
     }
 
     public void EquipWeapon(WeaponData weaponData)
     {
         equippedWeapon = weaponData;
-        
+
         if (currentWeapon == null)
         {
             currentWeapon = Instantiate(weaponData.WeaponPrefab);
@@ -54,11 +53,27 @@ public class WeaponManager : MonoBehaviour
         {
             Debug.Log("weaponslot full");
         }
-        
-       
     }
 
-    public void SwordAttack()
+    private void Attack()
+    {
+        switch (equippedWeapon.weaponType)
+        {
+            case WeaponData.WeaponType.SingleHanded:
+                SingleHandedAttack();
+                break;
+            case WeaponData.WeaponType.TwoHanded:
+                TwoHandedAttack();
+                break;
+            case WeaponData.WeaponType.Shield:
+                break;
+            default:
+                Debug.LogWarning("Unknown weapon type");
+                break;
+        }
+    }
+
+    private void SingleHandedAttack()
     {
         isAttacking = true;
         canAttack = false;
@@ -67,11 +82,21 @@ public class WeaponManager : MonoBehaviour
         StartCoroutine(WaitForAttackCooldown());
     }
 
+    private void TwoHandedAttack()
+    {
+        Debug.Log("attack with two handed weapon");
+    }
+
+    private void ShieldAttack()
+    {
+    }
+
     IEnumerator WaitForAttackCooldown()
     {
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(equippedWeapon.attackCooldown);
         canAttack = true;
     }
+
     IEnumerator AttackAction()
     {
         yield return new WaitForSeconds(0.2f);

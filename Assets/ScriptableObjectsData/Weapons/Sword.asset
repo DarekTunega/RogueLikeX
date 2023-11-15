@@ -16,3 +16,5 @@ MonoBehaviour:
   weaponName: Sword
   WeaponPrefab: {fileID: 6053320907128860008, guid: 67a0685fc7124114cb707d03d1a164b7,
     type: 3}
+  attackCooldown: 5
+  weaponType: 0
