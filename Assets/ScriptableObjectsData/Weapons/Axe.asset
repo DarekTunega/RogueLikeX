@@ -16,5 +16,9 @@ MonoBehaviour:
   weaponName: Axe
   WeaponPrefab: {fileID: 6805192611700296147, guid: 5a6e2ffb580eee04ca5792467f5194a8,
     type: 3}
+<<<<<<< HEAD
   attackCooldown: 2
+=======
+  attackCooldown: 5
+>>>>>>> 33f9b1120140b10396479f80e3d556691689dada
   weaponType: 0
