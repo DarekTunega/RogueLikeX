@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     public EnemyData enemyData;
     public float health;
@@ -20,7 +20,14 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
     }
 
-   
+    public void TakeDamage(float damageToRecieve)
+    {
+        health -= damageToRecieve;
+        if(health<= 0)
+        {
+            Die();
+        }
+    }
 
     public void Die()
     {

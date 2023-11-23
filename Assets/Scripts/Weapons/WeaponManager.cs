@@ -15,20 +15,23 @@ public class WeaponManager : MonoBehaviour
     public bool canAttack = true;
     public bool isAttacking = false;
     public bool canDamage = true;
-    private int attackCooldown = 1;
+    private PlayerStatsManager playerStatsManager;
     public PlayerAim playerCam;
     public bool weaponEquipped;
+    PlayerManager playerManager;
+    
 
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
     }
 
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed && equippedWeapon != null)
+        if (Input.GetMouseButtonDown(0) && !playerCam.isAimed && equippedWeapon != null && canAttack && player.currentStamina >= equippedWeapon.staminaCost)
         {
-            SwordAttack();
+            Attack();
         }
     }
 
@@ -58,7 +61,33 @@ public class WeaponManager : MonoBehaviour
        
     }
 
-    public void SwordAttack()
+    private void Attack()
+    {
+        switch (equippedWeapon.weaponType)
+        {
+            case WeaponData.WeaponType.OneHanded:
+                OneHandedAttack();
+                break;
+            case WeaponData.WeaponType.TwoHanded:
+                TwoHandedAttack();
+                break;
+            default:
+                Debug.Log("No weapon equipped");
+                break;
+        }
+        player.currentStamina -= equippedWeapon.staminaCost;
+        
+        
+    }
+    private void OneHandedAttack()
+    {
+        isAttacking = true;
+        canAttack = false;
+        animator.SetTrigger("Attack");
+        StartCoroutine(AttackAction());
+        StartCoroutine(WaitForAttackCooldown());
+    }
+    private void TwoHandedAttack()
     {
         isAttacking = true;
         canAttack = false;
@@ -69,7 +98,7 @@ public class WeaponManager : MonoBehaviour
 
     IEnumerator WaitForAttackCooldown()
     {
-        yield return new WaitForSeconds(attackCooldown);
+        yield return new WaitForSeconds(equippedWeapon.attackCooldown);
         canAttack = true;
     }
     IEnumerator AttackAction()

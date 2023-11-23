@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1d4a6bd3f48dc4cb74b8e3c5ce7c69, type: 3}
+  m_Name: Sword_Slinger
+  m_EditorClassIdentifier: 
+  itemName: Sword slinger
+  itemIcon: {fileID: 0}
+  itemDescription: a fucking sword
+  weaponModel: {fileID: 919132149155446097, guid: 498c2597349d72f409abdca7c230cd54,
+    type: 3}
+  requiredLevel: 0
+  requiredStrength: 0
+  magicRequirement: 0
+  weaponDamage: 10
+  criticalChance: 0
+  staminaCost: 0
+  manaCost: 0
+  healthCost: 0

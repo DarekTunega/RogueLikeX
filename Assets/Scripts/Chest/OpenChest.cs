@@ -7,6 +7,9 @@ using UnityEngine;
 public class OpenChest : MonoBehaviour, Iineractible
 {
    [SerializeField] private GameObject openedChest;
+   [SerializeField] private GameObject closedChest;
+   [SerializeField] private MeshFilter chestMesh;
+   [SerializeField] private Mesh openChestMesh;
    [SerializeField]private GameObject padlock;
    private bool isLocked;
    private Player player;
@@ -38,9 +41,14 @@ public class OpenChest : MonoBehaviour, Iineractible
    private void Open()
    {
       isLocked = false;
-      var padlockRB = padlock.GetComponent<Rigidbody>();
-      padlockRB.isKinematic = false;
-      Instantiate(openedChest, this.transform.position, this.transform.rotation);
-      Destroy(this.gameObject);
+      var padlockRb = padlock.GetComponent<Rigidbody>();
+      padlockRb.isKinematic = false;
+      chestMesh.mesh = openChestMesh;
+      GiveLoot();
+   }
+
+   private void GiveLoot()
+   {
+      Debug.Log("loot instantiated");
    }
 }

@@ -17,14 +17,10 @@ public class WeaponHitbox : MonoBehaviour
          Debug.Log("Collided with enemy");
          Enemy enemy = other.GetComponent<Enemy>();
          float damage = WeaponData.damage;
-        Debug.Log(damage);
-         enemy.health -= damage;
+         damage += player.meleeDamage;
          player.CallItemOnHit(enemy);
-         Debug.Log(enemy.health);
-         if (enemy.health <= 0)
-         {
-            enemy.Die();
-         }
+         enemy.TakeDamage(damage);
+        
       }
    }
 

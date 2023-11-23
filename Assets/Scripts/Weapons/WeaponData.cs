@@ -8,4 +8,13 @@ public class WeaponData : ScriptableObject
     public float damage;
     public string weaponName;
     public GameObject WeaponPrefab;
+    public float attackCooldown;
+    public WeaponType weaponType;
+    public int staminaCost;
+    
+    public enum WeaponType
+    {
+        OneHanded,
+        TwoHanded,
+    }
 }

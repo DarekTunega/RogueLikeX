@@ -30,6 +30,11 @@ public class PlayerMovementNonAimed : MonoBehaviour
 
     private void Update()
     {
+    
+    }
+
+    public void HandlePlayerMovement()
+    {
         _isAiming = IsAiming();
 
         if (!_isAiming)
@@ -44,7 +49,6 @@ public class PlayerMovementNonAimed : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
-
     private bool IsAiming()
     {
         return Input.GetMouseButton(1);
